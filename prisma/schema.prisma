@@ -1,0 +1,52 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model korzhi {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(255)
+  description String @db.Text
+  images      String @db.Text
+}
+
+model kremy {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(255)
+  description String @db.Text
+  images      String @db.Text
+}
+
+model napovnennya {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(255)
+  description String @db.Text
+  images      String @db.Text
+}
+
+model tags {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(255)
+}
+
+model torty {
+  id          Int    @id @default(autoincrement())
+  name        String @db.VarChar(255)
+  description String @db.Text
+  tags        String @db.VarChar(255)
+  images      String @db.Text
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model users {
+  id           Int    @id @default(autoincrement())
+  name         String @db.VarChar(255)
+  email        String @db.VarChar(255)
+  password     String @db.VarChar(255)
+  roles        String @db.VarChar(255)
+  refreshToken String @db.Text
+}
